@@ -1,56 +1,119 @@
-# TODO.md — Next Tasks
+# SiteSwift UAE — Launch TODO
 
-## 🔴 IMMEDIATE (Do today/tomorrow)
+> ⚡ Estimated time to first client: **2-4 weeks**
 
-- [ ] **Customize `demo-website-template.html`** — Replace `971XXXXXXXXX` with your actual WhatsApp number. Replace `hello@siteswift.ae` with your email. Update the business name if not "SiteSwift UAE."
-- [ ] **Set up email for outreach** — Create a dedicated Gmail address (e.g., `siteswift.uae@gmail.com`). Do NOT use your personal email.
-- [ ] **Push to GitHub Pages** — Create a GitHub repo called `siteswift-uae`, push `demo-website-template.html` as `index.html`, enable Pages. Test the link.
-- [ ] **Open dashboard.html** — Add your own lead data. Test that the pipeline stats look reasonable.
-- [ ] **Find 20 leads** — Open Google Maps. Search: "clinics", "gyms", "cafes" in areas near you. Copy names, industries, phone numbers. Add to `lead-database-template.csv`.
+---
+
+## 🔴 RIGHT NOW (Today — 2 hours)
+
+### Brand Setup
+- [ ] Pick your business name (or keep "SiteSwift UAE")
+- [ ] Create a dedicated Gmail: `siteswift.uae@gmail.com` or yourchoice@gmail.com
+- [ ] Get a dedicated UAE number (Etisalat pay-as-you-go SIM = AED 50)
+
+### Account Setup (3 accounts, 15 min each)
+- [ ] **Brevo** — Go to https://www.brevo.com/ → Free Account → Verify email → API Keys
+- [ ] **Stripe** — Go to https://stripe.com/en-ae → Create account → Add 3 products (Starter/Business/Premium) with recurring billing
+- [ ] **Google Places API** — Go to https://console.cloud.google.com/ → New Project → Enable Places API → Create Credentials (API Key)
+
+### Deploy
+- [ ] Edit `index.html` — replace `[YOUR-EMAIL]` and `[YOUR-WHATSAPP-NUMBER]` with your real info
+- [ ] Push to GitHub → auto-deploys to https://hosxam.github.io/siteswift-uae/
+
+---
 
 ## 🟡 THIS WEEK
 
-### Account Setup (Needs Your Credentials — Can't Do Without You)
+### Tech Setup
+- [ ] **Install Python deps:** `pip install -r requirements.txt`
+- [ ] **Copy .env:** `cp .env.example .env` and fill in all values
+- [ ] **Generate portfolio:** `python demo_generator.py --batch` → opens 22 demo sites
+- [ ] **Install UptimeRobot:** Add your GitHub Pages URL as a monitor
+- [ ] **Set up Google Analytics:** Add your G-ID to the landing page
 
-- [ ] **Set up Brevo account** — Go to https://brevo.com, click "Free Account". Use your Gmail to sign up. After setup, create 3 email sequences: Welcome, Demo Ready, Site Live. Copy content from `outreach-email-templates.md` and `follow-up-script.md` into your Brevo templates.
-- [ ] **Set up Stripe account** — Go to https://stripe.com/en-ae, create account. Add 3 products: Starter (AED 499/mo), Business (AED 799/mo), Premium (AED 1,299/mo). Enable recurring billing.
-- [ ] **Set up UptimeRobot** — Go to https://uptimerobot.com, sign up free. Add your GitHub Pages site as a monitor (pings every 5 min).
-- [ ] **Set up Google Analytics** — Go to https://analytics.google.com, create property for `hosxam.github.io/siteswift-uae/`. Copy the G-ID into your landing page.
-- [ ] **Create dedicated outreach email** — Set up `siteswift.uae@gmail.com` or use a separate Gmail account you create for this.
+### Outreach
+- [ ] **Research contact info:** Run `python enrich_leads.py` → opens search tabs for phone/email
+- [ ] **Find 5 real phone numbers** from Google Maps direct listings (click each lead on maps.google.com)
+- [ ] **Send 5 personalized emails** using `outreach-email-templates.md` — NOT copy-paste, personalize each
+- [ ] **Send 5 Instagram DMs** using templates in `instagram_dm_templates.md`
+- [ ] **Log all outreach** in the CSV (update `status` column)
 
-### Outreach & Sales
+### Sales Ready
+- [ ] Read `sales-script.md` — practice it once out loud
+- [ ] Create a free Calendly account: https://calendly.com
+- [ ] Set up Calendly link for "15 min discovery call"
 
-- [ ] **Send first 5 outreach emails** — Use templates from `outreach-email-templates.md`. Personalize each one with the lead's name and business. Do NOT copy-paste blindly. Send from your dedicated outreach email.
-- [ ] **Customize sales script** — Read `sales-script.md`. Practice it 3 times in the mirror. Adjust wording to sound like you, not a script.
-- [ ] **Build a portfolio** — Take `demo-website-template.html`, customize it for a fake client in each industry (clinic, gym, cafe). Deploy them as subdirectories. Use these as examples when pitching.
+---
 
-## 🟡 NEXT WEEK
+## 🟢 WEEK 2
 
-- [ ] **Get first client** — Follow the workflow. Send emails. Follow up. Build demos. Close 1 deal.
-- [ ] **Set up UptimeRobot** — Add your client's site (and your own) for free monitoring.
-- [ ] **Set up Google Analytics** — For your own site and any client site you build.
-- [ ] **Set up Google Search Console** — For SEO tracking.
-- [ ] **Create a simple contract** — Google Doc or PDF with: service description, price, payment terms, cancellation policy.
+### First Sales
+- [ ] Follow up with everyone from Week 1 (use `follow-up-script.md`)
+- [ ] Book first discovery call
+- [ ] Send first proposal using `pricing-packages.md`
+- [ ] Close first client 🎉
 
-## 🟢 THIS MONTH
+### Automation
+- [ ] Configure Brevo sequences:
+  - Day 0: Welcome email
+  - Day 3: Follow-up email  
+  - Day 7: Value-add email
+  - Day 14: "Last chance" email
+- [ ] Run `python setup_scheduler.py` to auto-scrape daily
+- [ ] Add 20 more leads to the database (search "restaurants Dubai no website" etc.)
 
-- [ ] **Get 3-5 paying clients** — Pipeline: 50 leads → 10 replies → 5 demos → 3-5 clients (rough math)
-- [ ] **Send first monthly reports** — Manual for now. Template: "Hi [Client], here's your monthly stats..."
-- [ ] **Collect first testimonials** — Ask happy clients for a 1-sentence review. Add to your landing page.
-- [ ] **Review and optimize** — Check open rates, reply rates, conversion. Adjust templates.
-- [ ] **Decide on name/branding** — "SiteSwift UAE" is a placeholder. Pick something you like.
+### Pipeline
+- [ ] Update `dashboard.html` with your stats card values
+- [ ] Track every interaction in the CSV
 
-## 🔵 FUTURE (After first 3 months)
+---
 
-- [ ] **Launch German medical pathway funnel** (secondary income stream)
-- [ ] **Hire a VA** for lead research ($200-300/month)
-- [ ] **Set up proper CRM** (Pipedrive or HubSpot free tier)
-- [ ] **Create a proper template system** to build demo sites in 15 minutes
-- [ ] **Add blog content** to your site for organic lead generation
-- [ ] **Run Google Ads** with a small budget (AED 500/month test)
+## 🔵 MONTH 1
 
-## 📊 TRACKING
+### Growth
+- [ ] Target 2 clients minimum (AED 1,000+ MRR)
+- [ ] Collect 3 testimonials
+- [ ] Build case studies from first clients
+- [ ] Update landing page with testimonials
+- [ ] Add portfolio section with real client sites
 
-- Open a Google Sheet called "SiteSwift Revenue" with columns: Month, New Clients, Churned, MRR, Expenses, Profit
-- Update monthly
-- Aim for: Month 1 = 2 clients (AED 1,000+), Month 3 = 8 clients (AED 4,000+), Month 6 = 20 clients (AED 10K+)
+### Scale
+- [ ] Hire a VA for lead research (AED 500-1000/mo)
+- [ ] Set up referral program: "Refer a business, get 1 month free"
+- [ ] Expand to DIFC, JLT, Barsha areas
+- [ ] Build "Website Audit" free tool → captures leads automatically
+
+---
+
+## 🟣 MONTH 3 TARGETS
+
+- [ ] 8 clients → AED 4,000+ MRR
+- [ ] Automate 80% of outreach with Brevo sequences
+- [ ] Start Instagram ads for lead generation (AED 200/mo budget)
+- [ ] Partner with a freelancer for overflow work
+- [ ] Launch SEO add-on service (AED 299/mo per client)
+
+---
+
+## 📈 MONTH 6 TARGETS
+
+- [ ] 20 clients → AED 10,000+ MRR
+- [ ] Consider hiring a salesperson (commission-only to start)
+- [ ] Launch the German medical pathway digital products as secondary income
+- [ ] Evaluate: should you scale or keep it semi-automated?
+
+---
+
+## 💡 PRO TIPS
+
+**Don't build perfect websites.** Build "good enough" and launch fast. You can always iterate.
+
+**Price is not the problem.** The problem is trust. A 5-minute call where you show a demo site does more than 50 emails.
+
+**Instagram DMs > Email for UAE small businesses.** They check IG 10x more than email. Send short DMs.
+
+**Use the "no website" angle.** It's not an insult — it's a fact. "I noticed you don't have a website" is the strongest opener.
+
+**Collect testimonials from Day 1.** Future clients decide based on social proof, not features.
+
+**Monthly recurring revenue is the goal.** One sale = money every month. Worth more than a one-time project.
