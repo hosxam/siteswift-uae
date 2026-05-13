@@ -10,9 +10,17 @@
 
 ## 🟡 THIS WEEK
 
-- [ ] **Send first 5 outreach emails** — Use templates from `outreach-email-templates.md`. Personalize each one with the lead's name and business. Do NOT copy-paste blindly.
-- [ ] **Set up Brevo account** — brevo.com. Free tier. Create 3 email sequences: Welcome, Demo Ready, Site Live.
-- [ ] **Set up Stripe account** — stripe.com. Create products for Starter/Business/Premium plans. Set up recurring billing.
+### Account Setup (Needs Your Credentials — Can't Do Without You)
+
+- [ ] **Set up Brevo account** — Go to https://brevo.com, click "Free Account". Use your Gmail to sign up. After setup, create 3 email sequences: Welcome, Demo Ready, Site Live. Copy content from `outreach-email-templates.md` and `follow-up-script.md` into your Brevo templates.
+- [ ] **Set up Stripe account** — Go to https://stripe.com/en-ae, create account. Add 3 products: Starter (AED 499/mo), Business (AED 799/mo), Premium (AED 1,299/mo). Enable recurring billing.
+- [ ] **Set up UptimeRobot** — Go to https://uptimerobot.com, sign up free. Add your GitHub Pages site as a monitor (pings every 5 min).
+- [ ] **Set up Google Analytics** — Go to https://analytics.google.com, create property for `hosxam.github.io/siteswift-uae/`. Copy the G-ID into your landing page.
+- [ ] **Create dedicated outreach email** — Set up `siteswift.uae@gmail.com` or use a separate Gmail account you create for this.
+
+### Outreach & Sales
+
+- [ ] **Send first 5 outreach emails** — Use templates from `outreach-email-templates.md`. Personalize each one with the lead's name and business. Do NOT copy-paste blindly. Send from your dedicated outreach email.
 - [ ] **Customize sales script** — Read `sales-script.md`. Practice it 3 times in the mirror. Adjust wording to sound like you, not a script.
 - [ ] **Build a portfolio** — Take `demo-website-template.html`, customize it for a fake client in each industry (clinic, gym, cafe). Deploy them as subdirectories. Use these as examples when pitching.
 
