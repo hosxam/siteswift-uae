@@ -27,8 +27,8 @@ except ImportError:
     pass
 
 BREVO_API_KEY = os.getenv("BREVO_API_KEY", "")
-SENDER_EMAIL = os.getenv("OUTREACH_EMAIL", "hello@siteswift.ae")
-SENDER_NAME = os.getenv("BUSINESS_NAME", "SiteSwift UAE")
+SENDER_EMAIL = os.getenv("OUTREACH_EMAIL", "hossam.hassan20@outlook.com")
+SENDER_NAME = os.getenv("BUSINESS_NAME", "Hossam | SiteSwift UAE")
 
 LEADS_FILE = os.path.join(os.path.dirname(__file__), "lead-database-template.csv")
 HISTORY_FILE = os.path.join(os.path.dirname(__file__), "email_sent_history.csv")

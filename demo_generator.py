@@ -17,8 +17,8 @@ import argparse
 from datetime import datetime
 
 BUSINESS_NAME = "SiteSwift UAE"
-CONTACT_EMAIL = "[YOUR-EMAIL]"
-WHATSAPP = "[YOUR-WHATSAPP-NUMBER]"
+CONTACT_EMAIL = "hossam.hassan20@outlook.com"
+WHATSAPP = "971502495662"
 
 # ============================================================
 # INDUSTRY-SPECIFIC CONTENT
