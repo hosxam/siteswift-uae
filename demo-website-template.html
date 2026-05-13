@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiteSwift UAE — Professional Websites for Your Business</title>
+    <meta name="description" content="Modern, affordable websites for UAE clinics, gyms, cafes, and local businesses. Starting at AED 499/month. No setup fee. 48-hour delivery.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #e8e8e8;
+            background: white;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1a1a2e;
+        }
+
+        .logo span {
+            color: #4f46e5;
+        }
+
+        .nav-links a {
+            margin-left: 24px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #4f46e5;
+        }
+
+        .btn-primary {
+            background: #4f46e5;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background: #4338ca;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f3ff 0%, #eef2ff 50%, #e0e7ff 100%);
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 span {
+            color: #4f46e5;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 40px;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat .num {
+            font-size: 32px;
+            font-weight: 800;
+            color: #4f46e5;
+        }
+
+        .hero-stat .label {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .btn-large {
+            display: inline-block;
+            background: #4f46e5;
+            color: white !important;
+            padding: 16px 36px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none !important;
+            transition: background 0.2s;
+        }
+
+        .btn-large:hover {
+            background: #4338ca;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: white;
+            color: #4f46e5 !important;
+            padding: 16px 36px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none !important;
+            border: 2px solid #4f46e5;
+            margin-left: 12px;
+        }
+
+        .hero-buttons {
+            margin-top: 32px;
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            transition: box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* How it works */
+        .how-it-works {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .step {
+            padding: 24px;
+        }
+
+        .step-num {
+            width: 48px;
+            height: 48px;
+            background: #4f46e5;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 auto 16px;
+        }
+
+        .step h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+        }
+
+        .pricing h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .pricing-card {
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            transition: box-shadow 0.3s;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #4f46e5;
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4f46e5;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price {
+            font-size: 36px;
+            font-weight: 800;
+            color: #4f46e5;
+            margin: 16px 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: #888;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 24px 0;
+        }
+
+        .pricing-card ul li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .pricing-card ul li::before {
+            content: "✓ ";
+            color: #4f46e5;
+            font-weight: 700;
+        }
+
+        .pricing-card .btn-primary {
+            display: inline-block;
+            margin-top: 16px;
+            text-decoration: none;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+
+        .faq-grid {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e8e8e8;
+            padding: 16px 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        .cta .btn-large {
+            background: white;
+            color: #4f46e5 !important;
+        }
+
+        .cta .btn-large:hover {
+            background: #f0f0f0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .feature-grid, .steps, .pricing-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-direction: column; gap: 16px; }
+            .nav-links { display: none; }
+            .hero-buttons .btn-secondary { margin-left: 0; margin-top: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Site<span>Swift</span> UAE</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+                <a href="#cta" class="btn-primary">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>A Professional Website for Your UAE Business. <span>No Upfront Cost.</span></h1>
+            <p>Modern, fast, mobile-friendly websites for clinics, gyms, cafes, and local businesses. Ready in 48 hours. Starting at AED 499/month.</p>
+            <div class="hero-buttons">
+                <a href="#cta" class="btn-large">Get Your Free Demo</a>
+                <a href="#features" class="btn-secondary">See How It Works</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="num">48h</div>
+                    <div class="label">Average Delivery</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">0</div>
+                    <div class="label">AED Setup Fee</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">100%</div>
+                    <div class="label">Mobile Optimized</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Everything Your Business Needs Online</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Under 2 seconds load time. Slow websites lose customers. Yours won't.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile First</h3>
+                    <p>90% of UAE users browse on mobile. Your site looks perfect on every screen.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Reliable</h3>
+                    <p>SSL security, automatic backups, 99.9% uptime. Your site is always on.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>SEO Optimized</h3>
+                    <p>Built so Google can find you. Show up when customers search for your services.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Unlimited Edits</h3>
+                    <p>Need a change? Just ask. Prices, photos, hours — we update it for free.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>No Contract</h3>
+                    <p>Month to month. Cancel anytime. No fees, no hassle, no questions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>Tell Us About Your Business</h3>
+                    <p>A quick 10-minute chat. We learn what you do, your style, your customers.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>We Build Your Site</h3>
+                    <p>Our team designs and develops a custom site. You see a draft in 48 hours.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>You Approve & Go Live</h3>
+                    <p>You review, we tweak. Once you're happy, your site goes live. Simple.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple Pricing. No Surprises.</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">AED 499 <span>/month</span></div>
+                    <ul>
+                        <li>1-page professional website</li>
+                        <li>Mobile + desktop optimized</li>
+                        <li>Custom design</li>
+                        <li>Contact form</li>
+                        <li>Google Maps embed</li>
+                        <li>Social media links</li>
+                        <li>Basic SEO</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#cta" class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Business</h3>
+                    <div class="price">AED 799 <span>/month</span></div>
+                    <ul>
+                        <li>3-5 page website</li>
+                        <li>Custom design (3 revisions)</li>
+                        <li>Photo gallery</li>
+                        <li>Booking integration</li>
+                        <li>Full SEO setup</li>
+                        <li>WhatsApp chat</li>
+                        <li>Monthly reports</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#cta" class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">AED 1,299 <span>/month</span></div>
+                    <ul>
+                        <li>Up to 10 pages</li>
+                        <li>Unlimited revisions</li>
+                        <li>Online booking system</li>
+                        <li>Blog / news section</li>
+                        <li>Advanced local SEO</li>
+                        <li>Monthly content updates</li>
+                        <li>Google Business Profile setup</li>
+                        <li>2-hour response support</li>
+                    </ul>
+                    <a href="#cta" class="btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item open">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                        Do I need any technical skills?
+                        <span>▾</span>
+                    </div>
+                    <div class="faq-answer">No. We build everything. You just tell us what you like and don't like. We handle the rest.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                        Can I see a draft before paying?
+                        <span>▾</span>
+                    </div>
+                    <div class="faq-answer">Yes. We'll build a demo site first. If you like it, you subscribe. If not, no charge.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                        What if I want to cancel?
+                        <span>▾</span>
+                    </div>
+                    <div class="faq-answer">No contracts. Cancel anytime. You keep your domain. No fees or penalties.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                        How fast can I get a website?
+                        <span>▾</span>
+                    </div>
+                    <div class="faq-answer">Most projects go live in 2-5 days. Premium sites may take 5-7 days depending on complexity.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                        Do you write the content too?
+                        <span>▾</span>
+                    </div>
+                    <div class="faq-answer">Yes. You give us a few bullet points about your business and we turn them into professional copy.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>Your Customers Are Searching Right Now</h2>
+            <p>Don't let them find your competitors first. Get your free demo site in 48 hours.</p>
+            <a href="https://wa.me/971XXXXXXXXX" class="btn-large">Start on WhatsApp →</a>
+            <p style="margin-top: 16px; font-size: 14px; opacity: 0.8;">Or email us at hello@siteswift.ae</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>SiteSwift UAE — Professional Websites for Local Businesses</p>
+            <p style="margin-top: 8px;">No contracts. Cancel anytime. Built in the UAE.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', function() {
+                this.parentElement.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>

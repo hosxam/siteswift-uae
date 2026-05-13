@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiteSwift Dashboard — Lead Management</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1a1a2e; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 24px; background: white; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 24px;
+        }
+        .logo { font-size: 20px; font-weight: 800; }
+        .logo span { color: #4f46e5; }
+        .header-right { display: flex; align-items: center; gap: 16px; }
+        .badge { background: #dcfce7; color: #166534; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .stat-card {
+            background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .stat-card .label { font-size: 13px; color: #888; margin-bottom: 4px; }
+        .stat-card .value { font-size: 28px; font-weight: 800; }
+        .stat-card .sub { font-size: 12px; color: #888; margin-top: 4px; }
+        .stat-card .value.green { color: #16a34a; }
+        .stat-card .value.blue { color: #4f46e5; }
+        .stat-card .value.amber { color: #d97706; }
+        .stat-card .value.red { color: #dc2626; }
+
+        .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+
+        .card {
+            background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .card h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th { text-align: left; padding: 8px 12px; border-bottom: 2px solid #e8e8e8; color: #888; font-weight: 600; font-size: 11px; text-transform: uppercase; }
+        td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }
+        tr:hover { background: #fafafa; }
+
+        .status-badge {
+            display: inline-block; padding: 3px 10px; border-radius: 20px;
+            font-size: 11px; font-weight: 600;
+        }
+        .status-new { background: #dbeafe; color: #1e40af; }
+        .status-contacted { background: #fef3c7; color: #92400e; }
+        .status-demo { background: #e0e7ff; color: #3730a3; }
+        .status-client { background: #dcfce7; color: #166534; }
+        .status-lost { background: #fee2e2; color: #991b1b; }
+
+        .pipeline-step { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        .pipeline-step .count { font-weight: 700; min-width: 24px; }
+        .pipeline-bar { flex: 1; height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+        .pipeline-bar .fill { height: 100%; border-radius: 4px; }
+        .fill-new { background: #3b82f6; }
+        .fill-contacted { background: #f59e0b; }
+        .fill-demo { background: #6366f1; }
+        .fill-client { background: #16a34a; }
+
+        .actions { margin-top: 16px; }
+        .actions a {
+            display: block; padding: 8px 0; color: #4f46e5; text-decoration: none;
+            font-size: 14px; font-weight: 500;
+        }
+        .actions a:hover { text-decoration: underline; }
+
+        .btn { display: inline-block; background: #4f46e5; color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; border: none; cursor: pointer; }
+        .btn-secondary { background: #f0f0f0; color: #333; }
+
+        @media (max-width: 768px) {
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .main-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Site<span>Swift</span> Dashboard</div>
+            <div class="header-right">
+                <span class="badge">✓ Live Data</span>
+                <span style="font-size: 14px; color: #888;">Last updated: <span id="lastUpdate">now</span></span>
+            </div>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="label">Total Leads</div>
+                <div class="value blue" id="totalLeads">0</div>
+                <div class="sub">All time</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Active Clients</div>
+                <div class="value green" id="activeClients">0</div>
+                <div class="sub">Paying monthly</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Pending Follow-ups</div>
+                <div class="value amber" id="pendingFollowups">0</div>
+                <div class="sub">Contacted, no response</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Monthly Revenue</div>
+                <div class="value green" id="monthlyRevenue">AED 0</div>
+                <div class="sub">MRR</div>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <div>
+                <div class="card">
+                    <h2>Lead List</h2>
+                    <table id="leadTable">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Industry</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadBody">
+                            <tr><td colspan="5" style="text-align:center;color:#888;padding:24px;">Load your CSV to see leads</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <h2>Pipeline</h2>
+                    <div class="pipeline-step">
+                        <span class="count" id="pNew">0</span>
+                        <div class="pipeline-bar"><div class="fill fill-new" id="pNewBar" style="width:0%"></div></div>
+                        <span style="font-size:12px;">New</span>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="count" id="pContacted">0</span>
+                        <div class="pipeline-bar"><div class="fill fill-contacted" id="pContactedBar" style="width:0%"></div></div>
+                        <span style="font-size:12px;">Contacted</span>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="count" id="pDemo">0</span>
+                        <div class="pipeline-bar"><div class="fill fill-demo" id="pDemoBar" style="width:0%"></div></div>
+                        <span style="font-size:12px;">Demo</span>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="count" id="pClient">0</span>
+                        <div class="pipeline-bar"><div class="fill fill-client" id="pClientBar" style="width:0%"></div></div>
+                        <span style="font-size:12px;">Client</span>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:16px;">
+                    <h2>Quick Actions</h2>
+                    <div class="actions">
+                        <a href="#">📥 Import CSV</a>
+                        <a href="#">📤 Export leads</a>
+                        <a href="#">📧 Compose email batch</a>
+                        <a href="#">📊 View revenue report</a>
+                        <a href="#">⚙️ Settings</a>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:16px;">
+                    <h2>Today's Tasks</h2>
+                    <div id="taskList">
+                        <p style="font-size:13px;color:#888;">No tasks for today. Add some in settings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample lead data (simulates CSV import)
+        const sampleLeads = [
+            { company: "Al Baraka Medical Center", industry: "Medical Clinic", contact: "Dr. Ahmed Khalil", status: "New", date: "2026-05-13" },
+            { company: "Gold's Gym Dubai Marina", industry: "Fitness", contact: "Omar Hassan", status: "Contacted", date: "2026-05-13" },
+            { company: "Cafe Medina JLT", industry: "Cafe", contact: "Layla Mansour", status: "New", date: "2026-05-13" },
+            { company: "Elite Physio Center", industry: "Physiotherapy", contact: "Dr. Sami Rashed", status: "New", date: "2026-05-13" },
+            { company: "BodyFit Studio JLT", industry: "Fitness", contact: "Karim Nasser", status: "Demo", date: "2026-05-12" },
+            { company: "Petra Dental Clinic", industry: "Dental", contact: "Dr. Noor Jaber", status: "Client", date: "2026-05-10" },
+            { company: "Al Noor Opticals", industry: "Retail", contact: "Yusuf Al Mansouri", status: "Contacted", date: "2026-05-11" },
+            { company: "Green Leaf Spa", industry: "Wellness", contact: "Rania Khoury", status: "New", date: "2026-05-13" },
+            { company: "Little Stars Nursery", industry: "Education", contact: "Mona Ibrahim", status: "New", date: "2026-05-13" },
+            { company: "Al Reef Real Estate", industry: "Real Estate", contact: "Fatima Al Hashimi", status: "Contacted", date: "2026-05-12" },
+        ];
+
+        function updateDashboard(leads) {
+            // Update stats
+            document.getElementById('totalLeads').textContent = leads.length;
+            const clients = leads.filter(l => l.status === 'Client').length;
+            const contacted = leads.filter(l => l.status === 'Contacted').length;
+            document.getElementById('activeClients').textContent = clients;
+            document.getElementById('pendingFollowups').textContent = contacted;
+
+            // Update monthly revenue
+            const clientCount = clients;
+            const avgRevenue = 799; // average across plans
+            document.getElementById('monthlyRevenue').textContent = `AED ${clientCount * avgRevenue}`;
+
+            // Update table
+            const tbody = document.getElementById('leadBody');
+            tbody.innerHTML = '';
+            leads.forEach(l => {
+                const statusClassMap = {
+                    'New': 'status-new',
+                    'Contacted': 'status-contacted',
+                    'Demo': 'status-demo',
+                    'Client': 'status-client',
+                    'Lost': 'status-lost'
+                };
+                const cls = statusClassMap[l.status] || 'status-new';
+                tbody.innerHTML += `<tr>
+                    <td><strong>${l.company}</strong></td>
+                    <td>${l.industry}</td>
+                    <td>${l.contact}</td>
+                    <td><span class="status-badge ${cls}">${l.status}</span></td>
+                    <td>${l.date}</td>
+                </tr>`;
+            });
+
+            // Update pipeline
+            const counts = { New: 0, Contacted: 0, Demo: 0, Client: 0, Lost: 0 };
+            leads.forEach(l => { if (counts[l.status] !== undefined) counts[l.status]++; });
+            const total = leads.length || 1;
+
+            document.getElementById('pNew').textContent = counts.New;
+            document.getElementById('pContacted').textContent = counts.Contacted;
+            document.getElementById('pDemo').textContent = counts.Demo;
+            document.getElementById('pClient').textContent = counts.Client;
+
+            document.getElementById('pNewBar').style.width = (counts.New / total * 100) + '%';
+            document.getElementById('pContactedBar').style.width = (counts.Contacted / total * 100) + '%';
+            document.getElementById('pDemoBar').style.width = (counts.Demo / total * 100) + '%';
+            document.getElementById('pClientBar').style.width = (counts.Client / total * 100) + '%';
+        }
+
+        // Load sample data
+        updateDashboard(sampleLeads);
+
+        // Update timestamp
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+    </script>
+</body>
+</html>
